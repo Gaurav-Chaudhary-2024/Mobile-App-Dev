@@ -4,12 +4,14 @@ A daily record of errors encountered, fixes applied, and learnings during develo
 
 📅 Day 1 — Gradle, SDK & Resource Issues
 Errors Encountered
+
 1)Syntax Error in build.gradle.kts
 Error: Unexpected tokens (use ';' to separate expressions on the same line)
 Analysis: This occurred because Groovy-style syntax (e.g., id 'com.android.application' or compileSdk 35) was used inside a file with a .kts extension. Kotlin DSL requires strict Kotlin syntax, specifically parentheses and double quotes.
 Fix:
 id("com.android.application")
 compileSdk = 35
+
 2)Unresolved Reference: kotlinOptions
 Error: Unresolved reference 'kotlinOptions' and Unresolved reference 'jvmTarget'
 Analysis: The build script was attempting to configure Kotlin-specific options, but the Kotlin Android plugin was not applied to the module, so the kotlinOptions block was not recognized.
@@ -17,20 +19,24 @@ Fix:
 plugins {
 id("org.jetbrains.kotlin.android")
 }
+
 3)Plugin Version Conflict
 Error: The request for this plugin could not be satisfied because the plugin is already on the classpath with an unknown version
 Analysis: Gradle forbids specifying a version for a plugin in a subproject if the plugin version is already defined in the root project or version catalog.
 Fix: Defined the version in the root build.gradle.kts using apply false and removed the version string from the app-level build.gradle.kts.
+
 4)Duplicate Extension: kotlin
 Error: Cannot add extension with name 'kotlin', as there is an extension already registered with that name
 Analysis: This project is a pure Java project (all source files are .java). Applying the Kotlin plugin to a project with no Kotlin code caused internal conflicts with the existing Java configuration.
 Fix: Removed the Kotlin plugin and the kotlinOptions block entirely, simplifying the configuration for a Java-based project.
+
 5)Incompatible compileSdk (AAR Metadata Failure)
 Error: Dependency 'androidx.activity:activity:1.13.0' requires libraries to compile against version 36 or later
 Analysis: Modern AndroidX libraries (like Media3 dependencies) require the latest Android SDK (API 36 or higher) to compile, even if the app targets a lower version.
 Fix:
 compileSdk = 36
 targetSdk = 35
+
 6)Android Resource Linking Failed
 Error: resource attr/colorBackground not found
 Analysis: The layout XML files were using ?attr/colorBackground. In the Android framework, the background attribute belongs to the system namespace.
