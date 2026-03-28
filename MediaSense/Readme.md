@@ -23,7 +23,6 @@ Smart Media & Sensor Hub in One App
 MediaSense/
 
  ├── 📁 .gradle        ⚙️ Auto-generated
-
  ├── 📁 .idea          🧠 IDE config
 
  ├── 📁 app            💻 Main application code
