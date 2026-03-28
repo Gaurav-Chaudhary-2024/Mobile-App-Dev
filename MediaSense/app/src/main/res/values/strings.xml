@@ -10,4 +10,7 @@
     <string name="placeholder_audio">🎵 Audio Player\nComing in Day 2</string>
     <string name="placeholder_video">🎬 Video Player\nComing in Day 3</string>
     <string name="placeholder_sensors">📡 Sensor Dashboard\nComing in Day 4</string>
+
+    <string name="test">Day 1 Complete</string>
 </resources>
+
