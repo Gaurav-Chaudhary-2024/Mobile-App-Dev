@@ -21,14 +21,23 @@ Smart Media & Sensor Hub in One App
 
 🗂️ Project Structure
 MediaSense/
+
  ├── 📁 .gradle        ⚙️ Auto-generated
+
  ├── 📁 .idea          🧠 IDE config
+
  ├── 📁 app            💻 Main application code
+
  ├── 📁 gradle         🔧 Build system
+
  ├── 📄 build.gradle   📦 Project config
+
  ├── 📄 settings.gradle
+
  ├── 📄 gradlew
+
  ├── 📄 gradlew.bat
+
  └── 📄 .gitignore
 
 🧱 Architecture
