@@ -71,7 +71,7 @@ MediaSense/
 2️⃣ Click "Open Project"  
 3️⃣ Select MediaSense folder  
 4️⃣ Sync Gradle 🔄  
-5️⃣ Run on Emulator/Device ▶️
+5️⃣ Run on Emulator/Device ▶️ 
 
 🔐 Permissions
 🔓 The app requires:
