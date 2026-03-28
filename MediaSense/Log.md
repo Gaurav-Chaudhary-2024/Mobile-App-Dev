@@ -63,9 +63,3 @@ Fix:
 
 Summary of the Day
 Learned a lot about error got a hell lot of errors fixed all of them by midnight of 27/03/2026 wanted to start with the setup of GitHub and Git but i was tired so dropped the idea got back to work in the morning and faced a lot of errors during the setup took 5-6 hours took more than i thought but i deserved that i did not watch a video about version control in android studio before so got blessed with so many errors that chatgpt gave up and said daily limit over but in the end got it up and running and now i am working on Day - 2 hope the work is over quickly.
-
-📸 Screenshots
-
-(Add your screenshots from the screenshots folder here)
-
-![Screenshot](./Screenshots/Day_1_audio.png)
