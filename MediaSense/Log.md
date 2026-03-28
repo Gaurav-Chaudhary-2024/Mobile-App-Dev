@@ -68,4 +68,4 @@ Learned a lot about error got a hell lot of errors fixed all of them by midnight
 
 (Add your screenshots from the screenshots folder here)
 
-![Screenshot](./screenshots/Day_1_audio.png)
+![Screenshot](./Screenshots/Day_1_audio.png)
