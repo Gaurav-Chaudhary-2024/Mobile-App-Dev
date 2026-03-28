@@ -23,6 +23,7 @@ Smart Media & Sensor Hub in One App
 MediaSense/
 
  ├── 📁 .gradle        ⚙️ Auto-generated
+
  ├── 📁 .idea          🧠 IDE config
 
  ├── 📁 app            💻 Main application code
@@ -44,34 +45,50 @@ MediaSense/
 🏗️ Built using Single Activity + Multiple Fragments
 
 1)🏠 MainActivity → Handles navigation
+
 2)🎧 AudioFragment → Audio features
+
 3)🎥 VideoFragment → Video streaming
+
 4)📡 SensorsFragment → Sensor data
 
 ⚡ Fragments are reused → Better performance & smoother UX
 🗓️ Development Roadmap
 
 ✅ Day 1 — Foundation
+
 1)🎨 Material 3 UI setup
+
 2)🔻 Bottom Navigation
+
 3)🧩 Fragment structure
 
 🎧 Day 2 — Audio Player
+
 1)📂 Select audio from device
+
 2)▶️ Play / ⏸ Pause / ⏹ Stop / 🔁 Restart
 
 🎥 Day 3 — Video Player
+
 1)🌐 Stream via URL
+
 2)🎮 Playback controls
 
 📡 Day 4 — Sensors
+
 1)📈 Accelerometer
+
 2)💡 Light Sensor
+
 3)📏 Proximity Sensor
 
 ✨ Day 5 — Polish
+
 1)🎞 Animations
+
 2)⚠️ Error handling
+ 
 3)🎯 UI refinement
 
 ⚙️ How to Run
@@ -82,9 +99,11 @@ MediaSense/
 5️⃣ Run on Emulator/Device ▶️ 
 
 🔐 Permissions
+
 🔓 The app requires:
 
 🌐 INTERNET → Video streaming
+
 🎵 READ_MEDIA_AUDIO / READ_EXTERNAL_STORAGE → Audio access
 
 🎨 UI Highlights
@@ -99,8 +118,11 @@ MediaSense/
 * 🧩 Core logic will be added inside fragments
 
 🚧 Current Status
+
 🟢 Project Setup Complete
+
 🟡 Features in Progress
+
 🔜 Full functionality coming soon
 
 👤 Author
