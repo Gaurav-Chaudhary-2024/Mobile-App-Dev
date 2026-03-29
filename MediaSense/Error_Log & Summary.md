@@ -1,102 +1,178 @@
-📘 Project Error Log
+# 📘 Project Error Log
 
 A daily record of errors encountered, fixes applied, and learnings during development.
 
-📅 Day 1 — Gradle, SDK & Resource Issues
-Errors Encountered
+---
 
-1)Syntax Error in build.gradle.kts
+# 📅 Day 1 — Gradle, SDK & Resource Issues
 
-Error: Unexpected tokens (use ';' to separate expressions on the same line)
+## ❌ Errors Encountered
 
-Analysis: This occurred because Groovy-style syntax (e.g., id 'com.android.application' or compileSdk 35) was used inside a file with a .kts extension. Kotlin DSL requires strict Kotlin syntax, specifically parentheses and double quotes.
+### 1️⃣ Syntax Error in build.gradle.kts
+**Error:** Unexpected tokens (use ';' to separate expressions)
 
-Fix:
+**Analysis:**  
+Used Groovy-style syntax in a Kotlin DSL (.kts) file.
+
+**Fix:**
+```
 id("com.android.application")
 compileSdk = 35
+```
 
-2)Unresolved Reference: kotlinOptions
+---
 
-Error: Unresolved reference 'kotlinOptions' and Unresolved reference 'jvmTarget'
+### 2️⃣ Unresolved Reference: kotlinOptions
+**Error:** kotlinOptions / jvmTarget not found
 
-Analysis: The build script was attempting to configure Kotlin-specific options, but the Kotlin Android plugin was not applied to the module, so the kotlinOptions block was not recognized.
+**Analysis:**  
+Kotlin plugin was not applied.
 
-Fix:
+**Fix:**
+```
 plugins {
 id("org.jetbrains.kotlin.android")
 }
+```
 
-3)Plugin Version Conflict
+---
 
-Error: The request for this plugin could not be satisfied because the plugin is already on the classpath with an unknown version
+### 3️⃣ Plugin Version Conflict
+**Error:** Plugin already on classpath
 
-Analysis: Gradle forbids specifying a version for a plugin in a subproject if the plugin version is already defined in the root project or version catalog.
+**Analysis:**  
+Version was defined twice (root + module).
 
-Fix: Defined the version in the root build.gradle.kts using apply false and removed the version string from the app-level build.gradle.kts.
+**Fix:**  
+Defined version in root using `apply false` and removed from app-level file.
 
-4)Duplicate Extension: kotlin
+---
 
-Error: Cannot add extension with name 'kotlin', as there is an extension already registered with that name
+### 4️⃣ Duplicate Extension: kotlin
+**Error:** Extension 'kotlin' already exists
 
-Analysis: This project is a pure Java project (all source files are .java). Applying the Kotlin plugin to a project with no Kotlin code caused internal conflicts with the existing Java configuration.
+**Analysis:**  
+Project is Java-based (.java), Kotlin plugin unnecessary.
 
-Fix: Removed the Kotlin plugin and the kotlinOptions block entirely, simplifying the configuration for a Java-based project.
+**Fix:**  
+Removed Kotlin plugin and kotlinOptions block.
 
-5)Incompatible compileSdk (AAR Metadata Failure)
+---
 
-Error: Dependency 'androidx.activity:activity:1.13.0' requires libraries to compile against version 36 or later
+### 5️⃣ Incompatible compileSdk
+**Error:** Requires API 36+
 
-Analysis: Modern AndroidX libraries (like Media3 dependencies) require the latest Android SDK (API 36 or higher) to compile, even if the app targets a lower version.
+**Analysis:**  
+Modern AndroidX libraries need latest SDK.
 
-Fix:
+**Fix:**
+```
 compileSdk = 36
 targetSdk = 35
+```
 
-6)Android Resource Linking Failed
+---
 
-Error: resource attr/colorBackground not found
+### 6️⃣ Android Resource Linking Failed
+**Error:** attr/colorBackground not found
 
-Analysis: The layout XML files were using ?attr/colorBackground. In the Android framework, the background attribute belongs to the system namespace.
+**Analysis:**  
+Used wrong namespace.
 
-Fix:
+**Fix:**
+```
 ?android:attr/colorBackground
+```
 
-Summary of the Day
-Learned a lot about error got a hell lot of errors fixed all of them by midnight of 27/03/2026 wanted to start with the setup of GitHub and Git but i was tired so dropped the idea got back to work in the morning and faced a lot of errors during the setup took 5-6 hours took more than i thought but i deserved that i did not watch a video about version control in android studio before so got blessed with so many errors that chatgpt gave up and said daily limit over but in the end got it up and running and now i am working on Day - 2 hope the work is over quickly.
+---
 
+## 🧠 Summary of Day 1
 
-Day 2 — Resource, Java Version & Layout Issues
-Errors Encountered
+- 😵 Faced a **huge number of errors**
+- ⏳ Took ~5–6 hours to fix everything
+- 💻 Struggled with Git & setup due to no prior practice
+- 🤯 Even hit ChatGPT daily limit 😅
+- ✅ Finally got the app running successfully
 
-1)Android Resource Linking Error
-Error: resource attr/colorBackground not found
-Cause: In fragment_audio.xml, the background was set using android:background="?attr/colorBackground". The ?attr/ prefix looks for the attribute in the local project or Material library, but colorBackground is a standard Android system attribute.
-Fix:
+---
+
+# 📅 Day 2 — Resource, Java & Layout Issues
+
+## ❌ Errors Encountered
+
+### 1️⃣ Android Resource Linking Error
+**Error:** attr/colorBackground not found
+
+**Cause:**  
+Wrong attribute reference in XML
+
+**Fix:**
+```
 ?android:attr/colorBackground
+```
 
-2)Java Compiler Deprecation Warnings
-Error: Java compiler has deprecated support for compiling with source/target compatibility version 8
-Cause: The project was configured with JavaVersion.VERSION_1_8. Modern Android Gradle Plugin versions require at least Java 11.
-Fix:
+---
+
+### 2️⃣ Java Version Warning
+**Error:** Java 8 deprecated
+
+**Cause:**  
+Old Java version used
+
+**Fix:**
+```
 compileOptions {
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 }
+```
 
-3)Layout Attribute Typo
-Error: Invalid constraint attribute
-Cause: Incorrect attribute used:
-app:layout_constraintEnd_of="parent"
-Fix:
+---
+
+### 3️⃣ Layout Attribute Typo
+**Error:** Invalid constraint attribute
+
+**Cause:**  
+Wrong attribute name
+
+**Fix:**
+```
 app:layout_constraintEnd_toEndOf="parent"
+```
 
-4)Constraint Logic Correction
-Issue: Constraints in fragment_audio.xml were circular or misaligned (for example, incorrect top/bottom linking)
-Fix: Restructured layout to follow proper top-to-bottom flow:
+---
 
-Card 1 (Now Playing): Constrained below Card 3
-Card 2 (Controls): Constrained below Card 1
-Card 3 (Open File): Constrained to top of parent
+### 4️⃣ Constraint Layout Issues
+**Issue:** Misaligned / circular constraints
 
-Summary of the Day
-Day - 2 was so much easy compared to Day - 1 did'nt have to work for 5 hours learn't how to change position of cards and now to copy files from laptop to the storage of emulator.
+**Fix:**  
+Restructured layout properly:
+
+- 🎵 Card 1 → Now Playing
+- 🎮 Card 2 → Controls
+- 📂 Card 3 → Open File (top)
+
+---
+
+## 🧠 Summary of Day 2
+
+- 😌 Much easier than Day 1
+- ⚡ Fixed issues quickly
+- 🎨 Learned layout positioning
+- 📱 Learned file transfer to emulator
+- 🚀 Smooth progress overall
+
+---
+
+## 📊 Overall Progress
+
+- 🟢 Day 1 → Foundation Complete
+- 🟢 Day 2 → Audio + Fixes Complete
+- 🟡 Day 3 → Next (Video Player)
+- 🟡 Day 4 → Pending (Sensors)
+
+---
+
+## 📸 Screenshots
+
+📁 Screenshots are available in the `Screenshot/` sub-folder  
