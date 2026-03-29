@@ -30,13 +30,14 @@
 
 ---
 ## 🗂️ Project Structure
-
+'''
 MediaSense/
 ├── 📁 app # Main application code
 ├── 📁 gradle # Build system
 ├── 📄 build.gradle # Configurations
 ├── 📄 settings.gradle
 └── 📄 README.md # Documentation
+'''
 ---
 
 # 🗓️ Development Progress
