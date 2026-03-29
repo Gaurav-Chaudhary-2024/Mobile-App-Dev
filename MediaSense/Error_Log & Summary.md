@@ -63,3 +63,40 @@ Fix:
 
 Summary of the Day
 Learned a lot about error got a hell lot of errors fixed all of them by midnight of 27/03/2026 wanted to start with the setup of GitHub and Git but i was tired so dropped the idea got back to work in the morning and faced a lot of errors during the setup took 5-6 hours took more than i thought but i deserved that i did not watch a video about version control in android studio before so got blessed with so many errors that chatgpt gave up and said daily limit over but in the end got it up and running and now i am working on Day - 2 hope the work is over quickly.
+
+
+Day 2 — Resource, Java Version & Layout Issues
+Errors Encountered
+
+1)Android Resource Linking Error
+Error: resource attr/colorBackground not found
+Cause: In fragment_audio.xml, the background was set using android:background="?attr/colorBackground". The ?attr/ prefix looks for the attribute in the local project or Material library, but colorBackground is a standard Android system attribute.
+Fix:
+?android:attr/colorBackground
+
+2)Java Compiler Deprecation Warnings
+Error: Java compiler has deprecated support for compiling with source/target compatibility version 8
+Cause: The project was configured with JavaVersion.VERSION_1_8. Modern Android Gradle Plugin versions require at least Java 11.
+Fix:
+compileOptions {
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+}
+
+3)Layout Attribute Typo
+Error: Invalid constraint attribute
+Cause: Incorrect attribute used:
+app:layout_constraintEnd_of="parent"
+Fix:
+app:layout_constraintEnd_toEndOf="parent"
+
+4)Constraint Logic Correction
+Issue: Constraints in fragment_audio.xml were circular or misaligned (for example, incorrect top/bottom linking)
+Fix: Restructured layout to follow proper top-to-bottom flow:
+
+Card 1 (Now Playing): Constrained below Card 3
+Card 2 (Controls): Constrained below Card 1
+Card 3 (Open File): Constrained to top of parent
+
+Summary of the Day
+Day - 2 was so much easy compared to Day - 1 did'nt have to work for 5 hours learn't how to change position of cards and now to copy files from laptop to the storage of emulator.

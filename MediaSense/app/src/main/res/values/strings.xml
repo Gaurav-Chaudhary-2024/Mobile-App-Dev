@@ -6,11 +6,18 @@
     <string name="tab_video">Video</string>
     <string name="tab_sensors">Sensors</string>
 
-    <!-- Placeholder text shown in Day 1 -->
-    <string name="placeholder_audio">🎵 Audio Player\nComing in Day 2</string>
+    <!-- Audio Player strings -->
+    <string name="no_file_selected">No file selected</string>
+    <string name="open_audio_file">Open Audio File</string>
+    <string name="btn_play">Play</string>
+    <string name="btn_pause">Pause</string>
+    <string name="btn_stop">Stop</string>
+    <string name="btn_restart">Restart</string>
+    <string name="default_time">00:00</string>
+    <string name="permission_denied">Storage permission denied</string>
+    <string name="select_audio">Select an audio file first</string>
+
+    <!-- Placeholder strings -->
     <string name="placeholder_video">🎬 Video Player\nComing in Day 3</string>
     <string name="placeholder_sensors">📡 Sensor Dashboard\nComing in Day 4</string>
-
-    <string name="test">Day 1 Complete</string>
 </resources>
-

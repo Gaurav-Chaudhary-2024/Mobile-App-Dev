@@ -20,111 +20,169 @@ Smart Media & Sensor Hub in One App
 | 📡 **Sensors**      | Live data from device sensors        |
 
 🗂️ Project Structure
+
 MediaSense/
+├── 📁 app            💻 Main application code
+├── 📁 gradle         ⚙️ Build system
+├── 📄 build.gradle   📦 Configurations
+├── 📄 settings.gradle
+└── 📄 README.md      📘 Documentation
 
- ├── 📁 .gradle        ⚙️ Auto-generated
+[//]: # (MediaSense/)
 
- ├── 📁 .idea          🧠 IDE config
+[//]: # ()
+[//]: # ( ├── 📁 .gradle        ⚙️ Auto-generated)
 
- ├── 📁 app            💻 Main application code
+[//]: # ()
+[//]: # ( ├── 📁 .idea          🧠 IDE config)
 
- ├── 📁 gradle         🔧 Build system
+[//]: # ()
+[//]: # ( ├── 📁 app            💻 Main application code)
 
- ├── 📄 build.gradle   📦 Project config
+[//]: # ()
+[//]: # ( ├── 📁 gradle         🔧 Build system)
 
- ├── 📄 settings.gradle
+[//]: # ()
+[//]: # ( ├── 📄 build.gradle   📦 Project config)
 
- ├── 📄 gradlew
+[//]: # ()
+[//]: # ( ├── 📄 settings.gradle)
 
- ├── 📄 gradlew.bat
+[//]: # ()
+[//]: # ( ├── 📄 gradlew)
 
- └── 📄 .gitignore
+[//]: # ()
+[//]: # ( ├── 📄 gradlew.bat)
 
-🧱 Architecture
+[//]: # ()
+[//]: # ( └── 📄 .gitignore)
 
-🏗️ Built using Single Activity + Multiple Fragments
+🗓️ Development Progress
+🧱 Day 1 — Foundation Setup
+🎯 Goal
 
-1)🏠 MainActivity → Handles navigation
+Build the complete project skeleton so future features can plug in easily.
 
-2)🎧 AudioFragment → Audio features
+✅ What We Implemented
+🎨 Material 3 Theme (Light + Dark mode)
+🔻 Bottom Navigation (3 Tabs)
+🧩 Fragment-based architecture
+📦 All dependencies added upfront
+🏗️ Architecture Setup
+🏠 MainActivity → Hosts navigation
+🎧 AudioFragment → Placeholder (now upgraded in Day 2)
+🎥 VideoFragment → Placeholder
+📡 SensorsFragment → Placeholder
 
-3)🎥 VideoFragment → Video streaming
+⚡ Fragments are reused → better performance
 
-4)📡 SensorsFragment → Sensor data
+📄 Key Files (Day 1)
+activity_main.xml → Layout with Bottom Navigation
+MainActivity.java → Handles fragment switching
+fragment_audio.xml → Placeholder UI
+fragment_video.xml → Placeholder UI
+fragment_sensors.xml → Placeholder UI
+build.gradle → All dependencies added
+AndroidManifest.xml → Required permissions
 
-⚡ Fragments are reused → Better performance & smoother UX
-🗓️ Development Roadmap
-
-✅ Day 1 — Foundation
-
-1)🎨 Material 3 UI setup
-
-2)🔻 Bottom Navigation
-
-3)🧩 Fragment structure
+📸 Day 1 Preview
+The Screenshot of the outputs have been saved in the Screenshot Sub-Folder
 
 🎧 Day 2 — Audio Player
+🎯 Goal
 
-1)📂 Select audio from device
+Convert AudioFragment into a fully functional audio player
 
-2)▶️ Play / ⏸ Pause / ⏹ Stop / 🔁 Restart
+🚀 What We Built
+📂 Pick audio from device
+▶️ Play / ⏸ Pause / ⏹ Stop / 🔁 Restart
+🎚 SeekBar with live timestamps
+🎵 File name display
+🧩 Files Updated
+📄 fragment_audio.xml
 
-🎥 Day 3 — Video Player
+🔄 Redesigned into Material 3 UI (3 Cards)
 
-1)🌐 Stream via URL
+🎵 Card 1 → Music icon + file name
+🎚 Card 2 → SeekBar + controls
+📂 Card 3 → Open file button
+📄 AudioFragment.java
 
-2)🎮 Playback controls
+💡 Complete audio player implementation
 
-📡 Day 4 — Sensors
+🎧 ExoPlayer Integration
 
-1)📈 Accelerometer
+Using Media3 ExoPlayer:
 
-2)💡 Light Sensor
+✅ Better format support
+✅ Smooth playback
+✅ Modern API (Google supported)
+📂 File Picker
+Uses ActivityResultLauncher
+Opens system file manager
+Filters: audio/*
+🔐 Permission Handling
+Android Version	Permission
+📱 Android 13+	READ_MEDIA_AUDIO
+📱 Android 6–12	READ_EXTERNAL_STORAGE
+📱 Below 6	❌ Not required
 
-3)📏 Proximity Sensor
+✔️ Checked at runtime
 
-✨ Day 5 — Polish
+🎚 SeekBar System
+⏱ Updates every 500ms
+00:20 ──────●────── 05:17
+👆 User can drag to seek
+⏳ Shows current + total duration
 
-1)🎞 Animations
+🎮 Playback Controls
+| Action     | Function               |
+| ---------- | ---------------------- |
+| ▶️ Play    | `exoPlayer.play()`     |
+| ⏸ Pause    | `exoPlayer.pause()`    |
+| ⏹ Stop     | `stop()` + `seekTo(0)` |
+| 🔁 Restart | `seekTo(0)` + `play()` |
+| 📂 Open    | Launch file picker     |
 
-2)⚠️ Error handling
- 
-3)🎯 UI refinement
+🧠 Lifecycle Management
+onPause() → ⏸ Pause
+onDestroyView() → 🧹 Release player
 
-⚙️ How to Run
-1️⃣ Open Android Studio  
-2️⃣ Click "Open Project"  
-3️⃣ Select MediaSense folder  
-4️⃣ Sync Gradle 🔄  
-5️⃣ Run on Emulator/Device ▶️ 
+✅ Prevents memory leaks
+✅ Smooth performance
 
-🔐 Permissions
+📄 strings.xml
 
-🔓 The app requires:
+➕ Added all UI strings for audio feature
 
-🌐 INTERNET → Video streaming
+📊 Day 2 Progress
+| Feature               | Status      |
+| --------------------- | ----------- |
+| 🎧 Audio Playback     | ✅ Completed |
+| 📂 File Picker        | ✅ Completed |
+| 🎚 SeekBar            | ✅ Completed |
+| 🎮 Controls           | ✅ Completed |
+| 🧠 Lifecycle Handling | ✅ Completed |
 
-🎵 READ_MEDIA_AUDIO / READ_EXTERNAL_STORAGE → Audio access
-
-🎨 UI Highlights
-* 🎯 Material 3 Design
-* 🌙 Dark Mode Support
-* 🔻 Bottom Navigation
-* 🧼 Clean & minimal layout
-
-⚠️ Important Notes
-* 📁 .gradle & .idea are auto-generated
-* 🚫 Avoid unnecessary changes to Gradle files
-* 🧩 Core logic will be added inside fragments
+📸 Day 2 Preview
+The Screenshot of the outputs have been saved in the Screenshot Sub-Folder
 
 🚧 Current Status
 
-🟢 Project Setup Complete
+🟢 Foundation Complete
+🟢 Audio Player Complete
+🟡 Video Player → Next
+🟡 Sensors → Pending
 
-🟡 Features in Progress
+🔮 Next Steps
+🎥 Day 3 — Video Player
+Stream video via URL
+ExoPlayer integration
 
-🔜 Full functionality coming soon
+📡 Day 4 — Sensors
+Accelerometer
+Light
+Proximity
 
 👤 Author
-
 💻 Gaurav Chaudhary
