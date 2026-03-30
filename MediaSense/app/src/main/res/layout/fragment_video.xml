@@ -4,14 +4,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground">
+    android:background="@android:color/black">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+    <!--
+        ExoPlayer PlayerView — renders video frames
+        use_controller="false" = we build our own controls
+        resize_mode="fit" = maintain aspect ratio
+    -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:resize_mode="fit"
+        app:use_controller="false"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/card_video_controls"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Buffering spinner — shown during video loading -->
+    <ProgressBar
+        android:id="@+id/progress_buffering"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/player_view"
+        app:layout_constraintBottom_toBottomOf="@+id/player_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--
+        Controls Card
+    -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_video_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="?attr/colorSurface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -20,32 +51,118 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
-            android:padding="32dp">
+            android:padding="20dp">
 
-            <ImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/ic_video"
-                android:contentDescription="Video icon"
-                app:tint="?attr/colorPrimary" />
+            <!-- URL Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_url"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_url_hint"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_video">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_video_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textUri"
+                    android:imeOptions="actionGo"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Load Video Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_open_url"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/btn_open_url"
+                app:icon="@drawable/ic_video"
+                app:cornerRadius="12dp" />
+
+            <!-- SeekBar -->
+            <SeekBar
+                android:id="@+id/seekbar_video"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Video Player"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorOnSurface" />
+                android:max="100"
+                android:progress="0"
+                android:thumbTint="?attr/colorPrimary"
+                android:progressTint="?attr/colorPrimary" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Timestamps -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Coming in Day 3"
-                android:textSize="14sp"
-                android:textColor="?attr/colorOnSurfaceVariant" />
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:id="@+id/txt_video_current_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_time"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/txt_video_total_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_time"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+            </LinearLayout>
+
+            <!-- Playback Controls -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_video_restart"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:icon="@android:drawable/ic_media_previous"
+                    android:contentDescription="Restart" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_video_play_pause"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@android:drawable/ic_media_play"
+                    android:text="@string/btn_play_video"
+                    android:textSize="16sp"
+                    app:cornerRadius="50dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_video_stop"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    app:icon="@android:drawable/ic_media_pause"
+                    android:contentDescription="Stop" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

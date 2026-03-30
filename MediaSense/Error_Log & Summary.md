@@ -162,17 +162,54 @@ Restructured layout properly:
 - 📱 Learned file transfer to emulator
 - 🚀 Smooth progress overall
 
----
+📅 Day 3 — Resource Linking & Theme Attribute Issues
+Errors Encountered
+Resource Not Found Error
+Error: resource attr/colorBackground (aka com.example.mediasense:attr/colorBackground) not found
+Affected Files:
+activity_main.xml
+fragment_audio.xml
+fragment_sensors.xml
 
-## 📊 Overall Progress
+Cause: The layout files were referencing ?attr/colorBackground. In Android, colorBackground is a platform (system) attribute. Without defining a custom attribute in the project, it must be referenced using the android: prefix.
 
-- 🟢 Day 1 → Foundation Complete
-- 🟢 Day 2 → Audio + Fixes Complete
-- 🟡 Day 3 → Next (Video Player)
-- 🟡 Day 4 → Pending (Sensors)
+Fix:
+Before:
+```
+android:background="?attr/colorBackground"
+```
+After:
+```
+android:background="?android:attr/colorBackground"
+```
+Secondary Fix: Text Color Attribute
 
----
+Issue: In fragment_sensors.xml, the text color used ?attr/colorOnBackground, which could lead to compatibility or linking issues depending on the theme configuration.
 
-## 📸 Screenshots
+Cause: colorOnBackground may not resolve correctly without proper Material theme setup or attribute inheritance.
 
-📁 Screenshots are available in the `Screenshot/` sub-folder  
+Fix:
+Before:
+```
+android:textColor="?attr/colorOnBackground"
+```
+After:
+```
+android:textColor="?android:attr/textColorPrimary"
+```
+Summary Of Day - 3
+Nothing much to say just glad that its over.
+
+📊 Overall Progress
+
+Day 1: Foundation complete
+Day 2: Audio and layout fixes complete
+Day 3: Resource issues resolved and project finalized
+
+📸 Screenshots
+
+Screenshots are available in the screenshots/ folder.
+
+🚀 Final Status
+
+Project successfully builds and runs after resolving all Gradle, resource, and layout issues.

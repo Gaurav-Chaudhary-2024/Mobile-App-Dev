@@ -6,7 +6,7 @@
     <string name="tab_video">Video</string>
     <string name="tab_sensors">Sensors</string>
 
-    <!-- Audio Player strings -->
+    <!-- Audio Player -->
     <string name="no_file_selected">No file selected</string>
     <string name="open_audio_file">Open Audio File</string>
     <string name="btn_play">Play</string>
@@ -14,10 +14,33 @@
     <string name="btn_stop">Stop</string>
     <string name="btn_restart">Restart</string>
     <string name="default_time">00:00</string>
-    <string name="permission_denied">Storage permission denied</string>
-    <string name="select_audio">Select an audio file first</string>
+    <string name="permission_denied">Storage permission denied. Please enable in Settings.</string>
+    <string name="select_audio">Please open an audio file first</string>
+    <string name="audio_loaded">Audio file loaded — tap Play to start</string>
 
-    <!-- Placeholder strings -->
-    <string name="placeholder_video">🎬 Video Player\nComing in Day 3</string>
-    <string name="placeholder_sensors">📡 Sensor Dashboard\nComing in Day 4</string>
+    <!-- Video Player -->
+    <string name="enter_url_hint">Enter video URL (mp4, m3u8…)</string>
+    <string name="btn_open_url">Load Video</string>
+    <string name="btn_play_video">Play</string>
+    <string name="btn_pause_video">Pause</string>
+    <string name="btn_stop_video">Stop</string>
+    <string name="btn_restart_video">Restart</string>
+    <string name="enter_url_first">Please enter a video URL first</string>
+    <string name="invalid_url">Invalid URL — must start with http:// or https://</string>
+    <string name="select_video_first">Please load a video URL first</string>
+    <string name="loading_video">Loading video — please wait…</string>
+    <string name="video_ready">Video ready — tap Play!</string>
+    <string name="video_error">Failed to load video. Check the URL and your connection.</string>
+
+    <!-- Sensors -->
+    <string name="sensor_accelerometer">Accelerometer</string>
+    <string name="sensor_light">Light Sensor</string>
+    <string name="sensor_proximity">Proximity Sensor</string>
+    <string name="sensor_not_available">Not available on this device</string>
+    <string name="accel_x">X: -- m/s²</string>
+    <string name="accel_y">Y: -- m/s²</string>
+    <string name="accel_z">Z: -- m/s²</string>
+    <string name="light_default">-- lux</string>
+    <string name="proximity_default">--</string>
+    <string name="proximity_raw_default">-- cm</string>
 </resources>

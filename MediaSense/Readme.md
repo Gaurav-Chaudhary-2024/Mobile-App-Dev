@@ -1,22 +1,23 @@
 # 🚀📱 MediaSense
 ### Smart Media & Sensor Hub in One App
 
-✨ **MediaSense** is a modern Android application that seamlessly combines:
+✨ **MediaSense** is a modern Android application that combines:
 
 - 🎧 Audio Playback
 - 🎥 Video Streaming
 - 📡 Sensor Monitoring
 
-—all inside one clean, **Material 3 powered interface**.
+—all inside a clean, **Material 3 powered UI**.
 
 ---
 
-## 🌟 Why MediaSense?
+## 🌟 Features
 
-- 💡 Demonstrates multiple Android capabilities in one app
-- ⚡ Smooth navigation with Bottom Navigation UI
-- 🎨 Built using Material 3 (Light + Dark Mode)
-- 🧩 Modular architecture for scalability
+- 🎧 Play audio from device storage
+- 🎥 Stream videos via URL (MP4, HLS, DASH)
+- 📡 Real-time sensor data (Accelerometer, Light, Proximity)
+- 🎨 Material 3 UI (Modern + Responsive)
+- 🔻 Bottom Navigation with smooth fragment switching
 
 ---
 
@@ -24,11 +25,12 @@
 
 | Feature             | Description                          |
 |---------------------|--------------------------------------|
-| 🎧 **Audio Player** | Play audio files from device storage |
-| 🎥 **Video Player** | Stream videos using URL              |
-| 📡 **Sensors**      | Live data from device sensors        |
+| 🎧 Audio Player     | Play local audio files               |
+| 🎥 Video Player     | Stream video from URL                |
+| 📡 Sensors Dashboard| Live device sensor data              |
 
 ---
+
 ## 🗂️ Project Structure
 ```
 MediaSense/
@@ -38,135 +40,129 @@ MediaSense/
 ├── 📄 settings.gradle
 └── 📄 README.md # Documentation
 ```
+
 ---
 
-# 🗓️ Development Progress
+# 🗓️ Development Journey
+
+---
 
 ## 🧱 Day 1 — Foundation Setup
 
 ### 🎯 Goal
-Build the complete project skeleton so future features can plug in easily.
+Build the complete app structure and setup environment.
 
-### ✅ What We Implemented
-- 🎨 Material 3 Theme (Light + Dark)
-- 🔻 Bottom Navigation (3 Tabs)
-- 🧩 Fragment-based architecture
-- 📦 All dependencies added upfront
+### ✅ Achievements
+- 🎨 Material 3 theme setup
+- 🔻 Bottom Navigation (3 tabs)
+- 🧩 Fragment architecture
+- 📦 Dependencies added (Material 3 + ExoPlayer)
+- 🔐 Permissions configured
 
 ### 🏗️ Architecture
-- 🏠 MainActivity → Hosts navigation
-- 🎧 AudioFragment → Placeholder (upgraded in Day 2)
-- 🎥 VideoFragment → Placeholder
-- 📡 SensorsFragment → Placeholder
-
-⚡ Fragments are reused → better performance
-
-### 📄 Key Files
-- activity_main.xml → Layout with Bottom Navigation
-- MainActivity.java → Fragment switching
-- fragment_audio.xml → Placeholder UI
-- fragment_video.xml → Placeholder UI
-- fragment_sensors.xml → Placeholder UI
-- build.gradle → Dependencies
-- AndroidManifest.xml → Permissions
-
-### 📸 Screenshots (Day 1)
-📁 Screenshots available in the `Screenshot/` sub-folder
+- MainActivity → Hosts navigation
+- AudioFragment → Audio module
+- VideoFragment → Video module
+- SensorsFragment → Sensor module
 
 ---
 
 ## 🎧 Day 2 — Audio Player
 
-### 🎯 Goal
-Convert AudioFragment into a fully functional audio player
-
-### 🚀 What We Built
-- 📂 Pick audio from device
+### 🚀 Features Implemented
+- 📂 Audio file picker (device storage)
 - ▶️ Play / ⏸ Pause / ⏹ Stop / 🔁 Restart
-- 🎚 SeekBar with live timestamps
+- 🎚 SeekBar with timestamps
 - 🎵 File name display
 
-### 🧩 UI Design (Material 3 - Cards)
-- 🎵 Card 1 → Music icon + file name
-- 🎚 Card 2 → SeekBar + controls
-- 📂 Card 3 → Open file button
+### ⚙️ Tech Used
+- Media3 ExoPlayer
+- ActivityResultLauncher
+- Runtime permissions
 
-### ⚙️ ExoPlayer Integration
-- ✅ Better format support
-- ✅ Smooth playback
-- ✅ Modern API (Media3)
+### 🔐 Permissions
 
-### 📂 File Picker
-- Uses ActivityResultLauncher
-- Opens system file manager
-- Filters: `audio/*`
+| Android Version | Permission |
+|----------------|-----------|
+| 13+            | READ_MEDIA_AUDIO |
+| 6–12           | READ_EXTERNAL_STORAGE |
+| Below 6        | Not required |
 
-### 🔐 Permission Handling
-
-| Android Version | Permission Required        |
-|----------------|--------------------------|
-| 📱 Android 13+ | READ_MEDIA_AUDIO         |
-| 📱 Android 6–12 | READ_EXTERNAL_STORAGE   |
-| 📱 Below 6     | ❌ Not required          |
-
-✔️ Permissions handled at runtime
-
-### 🎚 SeekBar System
-- ⏱ Updates every 500ms
-- 👆 User can drag to seek
-- ⏳ Shows current + total duration
-
-### 🎮 Playback Controls
-
-| Action     | Function               |
-|------------|------------------------|
-| ▶️ Play    | `exoPlayer.play()`     |
-| ⏸ Pause    | `exoPlayer.pause()`    |
-| ⏹ Stop     | `stop()` + `seekTo(0)` |
-| 🔁 Restart | `seekTo(0)` + `play()` |
-| 📂 Open    | Launch file picker     |
-
-### 🧠 Lifecycle Management
-- onPause() → ⏸ Pause
-- onDestroyView() → 🧹 Release player
-
-✅ Prevents memory leaks  
-✅ Smooth performance
-
-### 📊 Day 2 Progress
-
-| Feature               | Status       |
-|----------------------|-------------|
-| 🎧 Audio Playback     | ✅ Completed |
-| 📂 File Picker        | ✅ Completed |
-| 🎚 SeekBar            | ✅ Completed |
-| 🎮 Controls           | ✅ Completed |
-| 🧠 Lifecycle Handling | ✅ Completed |
-
-### 📸 Screenshots (Day 2)
-📁 Screenshots available in the `Screenshot/` sub-folder
+### 🧠 Key Learning
+- Lifecycle handling (release player)
+- Real-time UI updates (Handler + SeekBar)
 
 ---
 
-## 🚧 Current Status
+## 🎥 Day 3 — Video Player + Sensors
+
+### 🎬 Video Player
+
+#### 🚀 Features
+- 🌐 Stream video via URL
+- ▶️ Full playback controls
+- 🎚 SeekBar with timestamps
+- ⏳ Buffering indicator
+- ❗ Error handling (invalid URL, network issues)
+
+#### ⚙️ Tech
+- ExoPlayer + PlayerView
+- MediaItem (URI-based streaming)
+
+#### ✅ Supported Formats
+- MP4
+- HLS (.m3u8)
+- DASH
+
+---
+
+### 📡 Sensor Dashboard
+
+#### 📊 Sensors Implemented
+
+| Sensor          | Output                     |
+|----------------|---------------------------|
+| 📱 Accelerometer | X, Y, Z (m/s²)           |
+| 💡 Light        | Ambient light (lux)      |
+| 📏 Proximity    | Distance (cm)            |
+
+#### ⚙️ Features
+- 🔁 Real-time updates
+- 🔋 Battery-efficient lifecycle handling
+- ⚠️ Sensor availability check
+
+---
+
+## 📊 Current Status
 
 - 🟢 Foundation Complete
 - 🟢 Audio Player Complete
-- 🟡 Video Player → Next
-- 🟡 Sensors → Pending
+- 🟢 Video Player Complete
+- 🟢 Sensors Dashboard Complete 🎉
 
 ---
 
-## 🔮 Next Steps
+## 📸 Screenshots
 
-### 🎥 Day 3 — Video Player
-- Stream video via URL
-- ExoPlayer integration
+📁 Screenshots available in the `Screenshot/` folder
 
-### 📡 Day 4 — Sensors
-- Accelerometer
-- Light
-- Proximity
+---
+
+## 🔮 Future Improvements
+
+- 🎛 Advanced media controls
+- 🌐 Online streaming enhancements
+- 📊 More sensors (Gyroscope, Magnetometer)
+- 🎨 UI animations & polish
+
+---
+
+## 🛠️ Tech Stack
+
+- Java (Android)
+- Material 3
+- ExoPlayer (Media3)
+- Android SDK (API 36)
 
 ---
 
