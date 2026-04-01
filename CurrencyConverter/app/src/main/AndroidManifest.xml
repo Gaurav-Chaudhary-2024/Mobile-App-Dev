@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.currencyconverter">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CurrencyConverter">
+
+        <!--
+            MainActivity is the LAUNCHER entry point.
+            configChanges="uiMode" tells Android not to destroy
+            and recreate the activity on night-mode changes —
+            we handle recreation ourselves via recreate().
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="uiMode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            SettingsActivity is reached via an Explicit Intent
+            from MainActivity (as taught in the Intents lecture).
+        -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:configChanges="uiMode" />
+
+    </application>
+</manifest>

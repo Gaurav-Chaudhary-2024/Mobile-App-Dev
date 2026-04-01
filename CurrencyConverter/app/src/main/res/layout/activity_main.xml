@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_main.xml
+    ─────────────────────────────────────────────────────────────
+    Layout for the Currency Converter screen.
+
+    Widgets used (from syllabus):
+      • ConstraintLayout  – primary layout
+      • TextView          – labels and result display
+      • EditText          – amount input (numberDecimal)
+      • Spinner           – from/to currency selection
+      • Button (Material) – Convert and Settings
+    ─────────────────────────────────────────────────────────────
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <!-- ── Title ─────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/title_converter"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── Amount Label ──────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_amount_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textSize="16sp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ── Amount Input ──────────────────────────────────── -->
+    <EditText
+        android:id="@+id/et_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_amount"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_amount_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── From Currency Label ───────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_from_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_from"
+        android:textSize="16sp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/et_amount"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ── From Currency Spinner ─────────────────────────── -->
+    <Spinner
+        android:id="@+id/spinner_from"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_from_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── To Currency Label ─────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_to_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_to"
+        android:textSize="16sp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/spinner_from"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ── To Currency Spinner ───────────────────────────── -->
+    <Spinner
+        android:id="@+id/spinner_to"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_to_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── Convert Button ───────────────────────────────── -->
+    <Button
+        android:id="@+id/btn_convert"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_convert"
+        android:layout_marginTop="28dp"
+        app:layout_constraintTop_toBottomOf="@id/spinner_to"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── Result Card ───────────────────────────────────── -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_convert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Conversion result shown inside the card -->
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/result_placeholder"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="20dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- ── Settings Button (bottom-right) ───────────────── -->
+    <Button
+        android:id="@+id/btn_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
