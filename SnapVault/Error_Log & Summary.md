@@ -60,11 +60,13 @@ fragment_gallery.xml
 Updated root background to ?android:attr/colorBackground
 
 Summary of the Day
-⏳ Gradle sync took some time initially
-🧠 Fixed quickly using experience from previous project
-🔍 Identified attribute mismatch faster this time
-⚡ Debugging was smoother and more efficient
-👍 Overall development process was good and stable
+- ⏳ Gradle sync took some time initially
+- 🧠 Fixed quickly using experience from previous project
+- 🔍 Identified attribute mismatch faster this time
+- ⚡ Debugging was smoother and more efficient
+- 👍 Overall development process was good and stable
+
+
 🚀 Final Status
 
 Project successfully builds after resolving the resource linking error.
