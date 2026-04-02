@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">SnapVault</string>
+
+    <!-- Bottom nav tabs -->
+    <string name="tab_camera">Camera</string>
+    <string name="tab_gallery">Gallery</string>
+
+    <!-- Camera screen -->
+    <string name="btn_capture">Capture</string>
+    <string name="btn_choose_folder">Choose Save Folder</string>
+    <string name="no_folder_selected">No folder selected — using default</string>
+    <string name="photo_saved">Photo saved to: </string>
+    <string name="camera_permission_denied">Camera permission required</string>
+    <string name="storage_permission_denied">Storage permission required</string>
+    <string name="capture_failed">Failed to capture photo</string>
+    <string name="camera_not_available">Camera not available on this device</string>
+    <string name="save_folder_label">Saving to: </string>
+    <string name="default_folder">Default (Pictures/SnapVault)</string>
+
+    <!-- Gallery screen -->
+    <string name="btn_choose_gallery_folder">Choose Folder</string>
+    <string name="no_images_found">No images found in this folder</string>
+    <string name="gallery_placeholder">Tap \'Choose Folder\' to browse images</string>
+
+    <!-- Image Detail screen -->
+    <string name="image_detail_title">Image Details</string>
+    <string name="btn_delete">Delete Image</string>
+    <string name="delete_confirm_title">Delete Image?</string>
+    <string name="delete_confirm_message">This action cannot be undone.</string>
+    <string name="delete_yes">Delete</string>
+    <string name="delete_no">Cancel</string>
+    <string name="image_deleted">Image deleted successfully</string>
+    <string name="delete_failed">Failed to delete image</string>
+    <string name="label_name">Name</string>
+    <string name="label_path">Path</string>
+    <string name="label_size">Size</string>
+    <string name="label_date">Date Taken</string>
+</resources>
