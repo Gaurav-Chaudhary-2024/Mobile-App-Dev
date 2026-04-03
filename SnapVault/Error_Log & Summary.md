@@ -127,7 +127,7 @@ try {
 ```
 Implemented SharedPreferences for saving folder path.
 
-Summary of the Day
+📘 Summary of the Day
 - 🛠️ Fixed both build-time and runtime issues
 - 🧠 Better understanding of MediaStore queries
 - 🔐 Learned persistent URI permissions
