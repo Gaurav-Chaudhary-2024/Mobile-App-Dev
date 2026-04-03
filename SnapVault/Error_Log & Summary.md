@@ -126,20 +126,23 @@ try {
 }
 ```
 Implemented SharedPreferences for saving folder path.
+
 Summary of the Day
-🛠️ Fixed both build-time and runtime issues
-🧠 Better understanding of MediaStore queries
-🔐 Learned persistent URI permissions
-💾 Implemented SharedPreferences
-🚀 Improved app stability significantly
+- 🛠️ Fixed both build-time and runtime issues
+- 🧠 Better understanding of MediaStore queries
+- 🔐 Learned persistent URI permissions
+- 💾 Implemented SharedPreferences
+- 🚀 Improved app stability significantly
 
 🚀 Final Status
-✅ Build successful
-✅ Resource linking errors resolved
-✅ Gallery loads images correctly
-✅ No runtime crashes
-✅ Folder persistence working as expected
+- ✅ Build successful
+- ✅ Resource linking errors resolved
+- ✅ Gallery loads images correctly
+- ✅ No runtime crashes
+- ✅ Folder persistence working as expected
+
+
 📌 Conclusion
-🎯 Project builds successfully after resolving the AAPT2 resource linking issue
-🎨 Theme attributes are now correctly mapped to system attributes (?android:attr/...)
-⚙️ Application is stable, optimized, and functioning as intended
+- 🎯 Project builds successfully after resolving the AAPT2 resource linking issue
+- 🎨 Theme attributes are now correctly mapped to system attributes (?android:attr/...)
+- ⚙️ Application is stable, optimized, and functioning as intended
