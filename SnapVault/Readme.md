@@ -1,88 +1,68 @@
-# 📸 SnapVault — Day 1
+# 📸 SnapVault
 
-A modern Android camera app built using CameraX and Material 3.  
-Day 1 establishes the full foundation — from live camera preview to saving photos and navigation structure.
-
----
-
-## 🚀 Day 1 Overview
-
-We built the **core architecture of SnapVault** in a single day:
-
-✅ Live camera preview  
-✅ Capture and save photos  
-✅ Choose custom save folder  
-✅ Bottom navigation (Camera + Gallery)  
-✅ Material 3 Teal theme  
-✅ Placeholder screens for future features
+A modern Android media app built with CameraX and Material 3.  
+SnapVault allows users to capture photos, manage them in a gallery, and view detailed image metadata — all with a clean and optimized UI.
 
 ---
 
-## 🧠 Big Picture
+## 🚀 Features (Day 1 + Day 2)
 
-SnapVault is designed as a **modular, scalable media app**:
-
-- 📷 Camera (Day 1)
-- 🖼️ Gallery (Day 2)
-- 🔍 Image Details (Day 3)
-
-Day 1 focuses entirely on building a **strong camera foundation**.
-
----
-
-## 🛠️ Tech Stack
-
-- Java (Android)
-- CameraX (Modern Camera API)
-- Material 3 UI
-- Glide (for future image loading)
-- AndroidX Libraries
+### 📷 Camera (Day 1)
+- Live camera preview using CameraX (PreviewView)
+- Capture photos with low latency
+- Save images using MediaStore (works on all Android versions)
+- Custom folder selection
+- Timestamp-based file naming
 
 ---
 
-## 📦 Dependencies
-
-### 📷 CameraX
-- `camera-core` → core logic
-- `camera-camera2` → hardware connection
-- `camera-lifecycle` → lifecycle-aware camera
-- `camera-view` → PreviewView (UI)
-
-💡 Why CameraX?
-- Camera2 = complex (~500+ lines)
-- CameraX = simple (~50 lines), same result
+### 🖼️ Gallery (Day 2)
+- Folder picker to load images
+- RecyclerView 3-column grid layout
+- Efficient image loading using Glide
+- Smooth scrolling and caching
 
 ---
 
-### 🖼️ Glide
-- Loads images efficiently
-- Handles caching
-- Prevents memory issues
+### 🔍 Image Details (Day 2)
+- Full image preview
+- Displays metadata:
+    - File name
+    - File path
+    - File size
+    - Date created
+- Clean detail screen UI
 
 ---
 
-## 🔐 Permissions Handling
-
-Supports **ALL Android versions**:
-
-- `CAMERA` → access camera
-- `READ_EXTERNAL_STORAGE` (≤ Android 12)
-- `WRITE_EXTERNAL_STORAGE` (≤ Android 9)
-- `READ_MEDIA_IMAGES` (Android 13+)
-
-💡 Ensures compatibility across devices.
+### 🗑️ Delete Feature
+- Delete images directly from detail screen
+- Confirmation dialog (AlertDialog)
+- Auto return to gallery after deletion
 
 ---
 
-## 🎨 UI & Theme
-
-- Material 3 design
-- Teal/Green color theme (unique from MediaSense)
-- Auto Light/Dark mode support
+### 🎨 UI & Experience
+- Material 3 design system
+- Teal/Green theme (distinct from MediaSense)
+- Light/Dark mode support
+- Bottom navigation (Camera | Gallery)
 
 ---
 
-## 🏗️ App Architecture
+## 🧠 Architecture Overview
+
+SnapVault follows a modular structure:
+
+- 📷 Camera → Capture images
+- 🖼️ Gallery → Display images
+- 🔍 Details → Inspect + manage images
+
+Each feature is isolated into fragments/activities for scalability.
+
+---
+
+## 🗂️ Project Structure
 
 ```
 SnapVault/
@@ -90,15 +70,20 @@ SnapVault/
 │   ├── 📁 java/com/example/snapvault
 │   │   ├── MainActivity.java
 │   │   ├── CameraFragment.java
-│   │   ├── GalleryFragment.java (Day 2)
-│   │   └── ImageDetailActivity.java (Day 3)
+│   │   ├── GalleryFragment.java
+│   │   ├── ImageAdapter.java
+│   │   └── ImageDetailActivity.java
 │   ├── 📁 res/layout
 │   │   ├── activity_main.xml
 │   │   ├── fragment_camera.xml
 │   │   ├── fragment_gallery.xml
+│   │   ├── item_image.xml
 │   │   └── activity_image_detail.xml
+│   ├── 📁 res/drawable
+│   │   └── ic_back.xml
 │   └── 📁 res/values
 │       ├── colors.xml
+│       ├── strings.xml
 │       └── themes.xml
 ├── 📄 AndroidManifest.xml
 └── 📄 README.md
@@ -106,7 +91,57 @@ SnapVault/
 
 ---
 
-## 📱 UI Structure
+## ⚙️ Core Concepts
+
+### 📷 CameraX Integration
+- Simplified modern camera API
+- Lifecycle-aware (auto start/stop)
+- Uses:
+    - Preview → live feed
+    - ImageCapture → photo capture
+
+---
+
+### 💾 MediaStore Usage
+- Saves images safely across all Android versions
+- No legacy storage issues
+- Images appear in device gallery automatically
+
+---
+
+### 🖼️ RecyclerView + Adapter
+- Custom `ImageAdapter`
+- Displays images in grid format
+- Uses Glide for optimized loading
+
+---
+
+### 🔄 Navigation Flow
+
+```
+Camera → Capture Photo
+       ↓
+Gallery → Load Folder → Show Images
+       ↓
+Tap Image → Open Details
+       ↓
+Delete → Confirm → Return to Gallery
+```
+
+---
+
+## 🔐 Permissions Handling
+
+Supports all Android versions:
+
+- `CAMERA`
+- `READ_EXTERNAL_STORAGE` (≤ Android 12)
+- `WRITE_EXTERNAL_STORAGE` (≤ Android 9)
+- `READ_MEDIA_IMAGES` (Android 13+)
+
+---
+
+## 📱 UI Layout
 
 ```
 ┌─────────────────────────┐
@@ -121,111 +156,33 @@ SnapVault/
 
 ---
 
-## 📷 Camera Screen
+## 🧪 Completed Flow
 
-```
-┌─────────────────────────┐
-│     PreviewView         │  ← Live camera feed
-│                         │
-├─────────────────────────┤
-│ Saving to: SnapVault    │
-│                         │
-│ [Choose Folder][Capture]│
-└─────────────────────────┘
-```
+✔ Capture photo  
+✔ Save to selected folder  
+✔ Open gallery  
+✔ View images in grid  
+✔ Open image details  
+✔ Delete image with confirmation
 
 ---
 
-## ⚙️ Core Implementation
+## 🛠️ Tech Stack
 
-### 📍 Camera Setup (CameraX)
-
-- Uses `ProcessCameraProvider`
-- Two use cases:
-    - Preview → shows live feed
-    - ImageCapture → takes photos
-
-- Lifecycle aware:
-    - Starts/stops automatically
+- Java (Android)
+- CameraX
+- RecyclerView
+- Glide
+- Material 3 UI
+- AndroidX Libraries
 
 ---
 
-### 📸 Photo Capture
+## 📊 Status
 
-- Filename with timestamp  
-  `SnapVault_YYYYMMDD_HHMMSS.jpg`
-
-- Uses **MediaStore**:
-    - Works on all Android versions
-    - No legacy storage issues
-    - Images appear in device gallery
-
----
-
-### 📁 Folder Selection
-
-- Uses system folder picker
-- Saves selected folder URI
-- Updates UI dynamically
-- Future captures use selected folder
-
----
-
-### 🔐 Permissions Flow
-
-- Requests camera + storage permissions
-- Handles:
-    - ✅ Granted → start camera
-    - ❌ Denied → show Snackbar
-
----
-
-## 🔄 Navigation System
-
-- Bottom Navigation:
-    - Camera
-    - Gallery
-
-- Smart optimization:
-```java
-if (fragment == activeFragment) return;
-```
-✔ Prevents unnecessary reloads
-
----
-
-## 🧪 Placeholder Features
-
-### 🖼️ Gallery (Day 2)
-- Image grid (RecyclerView)
-- Folder selection
-- Image preview
-
-### 🔍 Image Details (Day 3)
-- Full image view
-- Metadata (size, date, path)
-- Delete with confirmation
-
----
-
-## 📊 Summary
-
-| Component | Purpose |
-|----------|--------|
-| CameraX | Camera preview + capture |
-| MediaStore | Safe image saving |
-| PreviewView | Live camera feed |
-| Navigation | Fragment switching |
-| Glide | Future image loading |
-
----
-
-## ✅ Status
-
-✔ Camera fully working  
-✔ UI complete  
-✔ Navigation implemented  
-✔ Ready for Day 2
+✔ Day 1 Complete — Camera System  
+✔ Day 2 Complete — Gallery + Details  
+🚧 Day 3 Pending — Advanced features
 
 ---
 
@@ -233,4 +190,4 @@ if (fragment == activeFragment) return;
 
 💻 **Gaurav Chaudhary**
 
-Built as part of Android learning journey 🚀
+Built as part of Android development learning journey 🚀

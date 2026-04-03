@@ -66,8 +66,80 @@ Summary of the Day
 - ⚡ Debugging was smoother and more efficient
 - 👍 Overall development process was good and stable
 
+📅 Day 2 — Build, Logic & Runtime Issues
+Errors Encountered
+1. Build Error: Android Resource Linking Failed
+
+Cause:
+Incorrect attribute reference (?attr instead of ?android:attr)
+
+Fix:
+```
+?android:attr/colorBackground
+```
+2. Warning: Deprecated Java Compatibility (Java 8)
+
+Cause:
+Java 8 is deprecated for modern Android builds.
+
+Fix:
+```
+compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+```
+Additional:
+Configured Java Toolchain to version 17.
+3. Logic Error: Gallery Not Loading Pictures
+
+Cause:
+
+Query matched only folder name
+No persistent permissions
+
+Fix:
+
+Updated query:
+```
+folderPath + "/%"
+```
+Added:
+```
+takePersistableUriPermission(...)
+```
+4. Runtime Crash & Missing Persistence
+
+Cause:
+
+Crash on permission failure
+Folder not saved
+
+Fix:
+
+Added:
+```
+try {
+    // permission logic
+} catch (Exception e) {
+    e.printStackTrace();
+}
+```
+Implemented SharedPreferences for saving folder path.
+Summary of the Day
+🛠️ Fixed both build-time and runtime issues
+🧠 Better understanding of MediaStore queries
+🔐 Learned persistent URI permissions
+💾 Implemented SharedPreferences
+🚀 Improved app stability significantly
 
 🚀 Final Status
-
-Project successfully builds after resolving the resource linking error.
-Theme attributes are now correctly mapped to system attributes.
+✅ Build successful
+✅ Resource linking errors resolved
+✅ Gallery loads images correctly
+✅ No runtime crashes
+✅ Folder persistence working as expected
+📌 Conclusion
+🎯 Project builds successfully after resolving the AAPT2 resource linking issue
+🎨 Theme attributes are now correctly mapped to system attributes (?android:attr/...)
+⚙️ Application is stable, optimized, and functioning as intended
