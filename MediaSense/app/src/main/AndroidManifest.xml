@@ -3,6 +3,7 @@
 
     <!-- Needed for video streaming from URL -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <!-- Read audio/media files — API 32 and below -->
     <uses-permission
@@ -18,7 +19,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MediaSense">
+        android:theme="@style/Theme.MediaSense"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".MainActivity"
